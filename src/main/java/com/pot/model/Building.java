@@ -25,58 +25,64 @@ public class Building {
 	@SequenceGenerator(name = "bidGen", sequenceName = "bidGen", initialValue = 1000, allocationSize = 1)
 	@Column(name = "building-id")
 	private Integer buildingId;
-	
+
 	@Column(name = "building-name")
 	private String buildingName;
-	
+
 	@Column(name = "building-owner-name")
 	private String buildingOwnerName;
-	
+
 	@Column(name = "floor-count")
 	private Integer floorCount;
-	
+
 	@Column(name = "area-in-sq-foot")
 	private Double areaInSqFoot;
-	
+
 	@Column(name = "building-color")
 	private String color;
-	
+
 	@Column(name = "building-location")
 	private String location;
-	
+
 	@Column(name = "building-cost")
 	private Double cost;
-	
+
 	@Column(name = "building-architect")
 	private String architect;
-	
+
 	@Column(name = "building-height")
 	private Double height;
-	
+
 	@Column(name = "is-Building-Details-Filled")
 	private Boolean isBuildingDetailsFilled;
-	
-	
-	
+
+//	private Integer machineId;
+//	
+//	private Integer instrumentId;
+//	
+//	private Integer materialId;
+//	
+//	private Integer manPowerId;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "machine-id", referencedColumnName = "machineId")
 	private Machines machines;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "instr-id", referencedColumnName = "instr-id")
 	private Instruments instruments;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "material-id", referencedColumnName = "material-id")
 	private Material material;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "man-power-id", referencedColumnName = "man-power-id")
 	private ManPower manPower;
-	
+
 	@CreationTimestamp
 	private LocalDateTime createdDateAndTime;
-	
+
 	@UpdateTimestamp
 	private LocalDateTime updatedDateAndTime;
 }

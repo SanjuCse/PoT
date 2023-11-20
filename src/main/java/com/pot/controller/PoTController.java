@@ -18,6 +18,8 @@ import com.pot.service.IBuildingService;
 import com.pot.service.IInstrumentService;
 import com.pot.service.IMaterialService;
 
+import jakarta.transaction.Transactional;
+
 @Controller
 public class PoTController {
 	@Autowired
@@ -64,11 +66,12 @@ public class PoTController {
 	@PostMapping("/add-material")
 	private String addMaterial(@ModelAttribute("material") Material material, RedirectAttributes attrs) {
 		material.setBuilding(buildingService.getBuildingByID(material.getBuildingId()));
-		System.out.println(buildingService.getBuildingByID(material.getBuildingId()));
-		System.out.println(material);
+//		System.out.println(buildingService.getBuildingByID(material.getBuildingId()));
+//		System.out.println(material);
+		Integer status2 = buildingService.updateMaterialByBuildingID(material, material.getBuildingId());
 		Boolean status = materialService.addMaterial(material);
 
-		if (status) {
+		if (status && (status2 > 0)) {
 			attrs.addFlashAttribute("resultMsg", "Material has been added successfully");
 		} else {
 			attrs.addFlashAttribute("resultMsg", "Unable to add Material");
