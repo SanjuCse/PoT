@@ -16,7 +16,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
 	<jsp:include page="header.jsp" />
@@ -28,88 +29,100 @@
 					Trips)</label> <input type="range" class="form-range" id="cementRange"
 					min="1" max="50" step="0.5" value="0"
 					oninput="this.nextElementSibling.value = this.value">
-					<frm:input
-					type="text" path="cement" class="form-control text-center" disabled="disabled" value="0"></frm:input>
-					
+				<frm:input type="text" path="cement"
+					class="form-control text-center" disabled="disabled" value="0"></frm:input>
+
 			</div>
 			<div class="col-md-3">
-				<label for="customRange" class="form-label">Construction Aggregate (In
-					Trips)</label> <input type="range" class="form-range" id="concreteRange"
-					min="1" max="50" step="0.5" value="0"
+				<label for="customRange" class="form-label">Construction
+					Aggregate (In Trips)</label> <input type="range" class="form-range"
+					id="concreteRange" min="1" max="50" step="0.5" value="0"
 					oninput="this.nextElementSibling.value = this.value">
-					<frm:input
-					type="text" path="constructionAggregate" class="form-control text-center" disabled="disabled" value="0"></frm:input>
+				<frm:input type="text" path="constructionAggregate"
+					class="form-control text-center" disabled="disabled" value="0"></frm:input>
 			</div>
 			<div class="col-md-3">
-				<label for="customRange" class="form-label">Aluminium Rod (In
-					Trips)</label> <input type="range" class="form-range" id="concreteRange"
-					min="1" max="50" step="1" value="0"
+				<label for="customRange" class="form-label">Aluminium Rod
+					(In Trips)</label> <input type="range" class="form-range"
+					id="concreteRange" min="1" max="50" step="1" value="0"
 					oninput="this.nextElementSibling.value = this.value">
-					<frm:input
-					type="text" path="rod" class="form-control text-center" disabled="disabled" value="0"></frm:input>
+				<frm:input type="text" path="rod" class="form-control text-center"
+					disabled="disabled" value="0"></frm:input>
 			</div>
 			<div class="col-md-3">
-				<label for="customRange" class="form-label">Sand (In
-					Trips)</label> <input type="range" class="form-range" id="concreteRange"
-					min="1" max="50" step="0.5" value="0"
+				<label for="customRange" class="form-label">Sand (In Trips)</label>
+				<input type="range" class="form-range" id="concreteRange" min="1"
+					max="50" step="0.5" value="0"
 					oninput="this.nextElementSibling.value = this.value">
-					<frm:input
-					type="text" path="sand" class="form-control text-center" disabled="disabled" value="0"></frm:input>
+				<frm:input type="text" path="sand" class="form-control text-center"
+					disabled="disabled" value="0"></frm:input>
 			</div>
-			
+
 			<div class="mt-5"></div>
 			<div class="col-md-6">
-				<label for="customRange" class="form-label">Brick - Cement (In
-					Trips)</label> <input type="range" class="form-range" 
-					min="1" max="50" step="0.5" value="0"
+				<label for="customRange" class="form-label">Brick - Cement
+					(In Trips)</label> <input type="range" class="form-range" min="1" max="50"
+					step="0.5" value="0"
 					oninput="this.nextElementSibling.value = this.value">
-					<frm:input
-					type="text" path="cementBrick" class="form-control text-center" disabled="disabled" value="0"></frm:input>
+				<frm:input type="text" path="cementBrick"
+					class="form-control text-center" disabled="disabled" value="0"></frm:input>
 			</div>
 			<div class="col-md-6">
 				<label for="customRange" class="form-label">Brick - Sand (In
-					Trips)</label> <input type="range" class="form-range" 
-					min="1" max="50" step="0.5" value="0"
+					Trips)</label> <input type="range" class="form-range" min="1" max="50"
+					step="0.5" value="0"
 					oninput="this.nextElementSibling.value = this.value">
-					<frm:input
-					type="text" path="sandBrick" class="form-control text-center" disabled="disabled" value="0"></frm:input>
-			</div> 
+				<frm:input type="text" path="sandBrick"
+					class="form-control text-center" disabled="disabled" value="0"></frm:input>
+			</div>
 			<div class="mt-5"></div>
 			<div class="col-md-3">
-				<label for="customRange" class="form-label">Pipe (In
-					Trips)</label> <input type="range" class="form-range" id="cementRange"
-					min="1" max="50" step="1" value="0"
+				<label for="customRange" class="form-label">Pipe (In Trips)</label>
+				<input type="range" class="form-range" id="cementRange" min="1"
+					max="50" step="1" value="0"
 					oninput="this.nextElementSibling.value = this.value">
-					<frm:input
-					type="text" path="pipe" class="form-control text-center" disabled="disabled" value="0"></frm:input>
-					
+				<frm:input type="text" path="pipe" class="form-control text-center"
+					disabled="disabled" value="0"></frm:input>
+
 			</div>
 			<div class="col-md-3">
-				<label for="customRange" class="form-label">Glass (In
-					Trips)</label> <input type="range" class="form-range" id="concreteRange"
-					min="1" max="50" step="1" value="0"
+				<label for="customRange" class="form-label">Glass (In Trips)</label>
+				<input type="range" class="form-range" id="concreteRange" min="1"
+					max="50" step="1" value="0"
 					oninput="this.nextElementSibling.value = this.value">
-					<frm:input
-					type="text" path="glass" class="form-control text-center" disabled="disabled" value="0"></frm:input>
+				<frm:input type="text" path="glass" class="form-control text-center"
+					disabled="disabled" value="0"></frm:input>
 			</div>
 			<div class="col-md-3">
 				<label for="customRange" class="form-label">Marble (In
 					Trips)</label> <input type="range" class="form-range" id="concreteRange"
 					min="1" max="50" step="1" value="0"
 					oninput="this.nextElementSibling.value = this.value">
-					<frm:input
-					type="text" path="marble" class="form-control text-center" disabled="disabled" value="0"></frm:input>
+				<frm:input type="text" path="marble"
+					class="form-control text-center" disabled="disabled" value="0"></frm:input>
 			</div>
 			<div class="col-md-3">
-				<label for="customRange" class="form-label">Ply (In
-					Trips)</label> <input type="range" class="form-range" id="concreteRange"
-					min="1" max="50" step="1" value="0"
+				<label for="customRange" class="form-label">Ply (In Trips)</label> <input
+					type="range" class="form-range" id="concreteRange" min="1" max="50"
+					step="1" value="0"
 					oninput="this.nextElementSibling.value = this.value">
-					<frm:input
-					type="text" path="ply" class="form-control text-center" disabled="disabled" value="0"></frm:input>
+				<frm:input type="text" path="ply" class="form-control text-center"
+					disabled="disabled" value="0"></frm:input>
+			</div>
+			<div class="d-flex justify-content-center">
+				<div class="col-md-6">
+					<frm:select path="buildingId" class="form-select" aria-label="Default select example">
+						<frm:option selected="selected" value="0">Choose Building</frm:option>
+						<c:forEach var="building" items="${buildings}">
+							<frm:option value="${building.buildingId}"> ${building.buildingName} </frm:option>
+						</c:forEach>
+					</frm:select>
+				</div>
 			</div>
 			<div class="col-12 text-center mt-5">
-				<button type="submit" class="btn btn-primary"><span class="bi bi-building-add"></span> Add Material</button>
+				<button type="submit" class="btn btn-primary">
+					<span class="bi bi-building-add"></span> Add Material
+				</button>
 			</div>
 		</frm:form>
 	</div>

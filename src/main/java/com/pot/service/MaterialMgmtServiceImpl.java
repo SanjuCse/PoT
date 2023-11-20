@@ -24,4 +24,9 @@ public class MaterialMgmtServiceImpl implements IMaterialService {
 		return materialRepo.findAll();
 	}
 
+	@Override
+	public Material getMaterialByID(Integer materialId) {
+		return materialRepo.getById(materialId);
+	}
+
 }

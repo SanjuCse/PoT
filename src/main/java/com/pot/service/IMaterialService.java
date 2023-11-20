@@ -8,4 +8,6 @@ public interface IMaterialService {
 	Boolean addMaterial(Material material);
 
 	List<Material> getAllMaterials();
+
+	Material getMaterialByID(Integer materialId);
 }

@@ -2,11 +2,13 @@ package com.pot.controller;
 
 import java.util.Map;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pot.model.Building;
@@ -49,13 +51,21 @@ public class PoTController {
 	}
 
 	@GetMapping("/add-material")
-	private String addMaterialPage(@ModelAttribute("material") Material material) {
+	private String addMaterialPage(@ModelAttribute("material") Material material, Map<String, Object> map) { // @RequestParam("materialId")
+																												// int
+																												// materialId,
+		map.put("buildings", buildingService.getAllBuildings());
+//		Material material2 = materialService.getMaterialByID(materialId);
+//		BeanUtils.copyProperties(material2, material);
+//		System.out.println(materialId);
 		return "add-material-form";
 	}
 
 	@PostMapping("/add-material")
 	private String addMaterial(@ModelAttribute("material") Material material, RedirectAttributes attrs) {
+		material.setBuilding(buildingService.getBuildingByID(material.getBuildingId()));
 		Boolean status = materialService.addMaterial(material);
+
 		if (status) {
 			attrs.addFlashAttribute("resultMsg", "Material has been added successfully");
 		} else {
@@ -97,5 +107,10 @@ public class PoTController {
 			attrs.addFlashAttribute("resultMsg", "Unable to add Instrumnets");
 		}
 		return "redirect:/materials";
+	}
+
+	@GetMapping("/about")
+	private String aboutPage() {
+		return "about";
 	}
 }
