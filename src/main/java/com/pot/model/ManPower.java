@@ -16,7 +16,7 @@ import lombok.Data;
 public class ManPower {
 	@Id
 	@GeneratedValue(generator = "manPowerIdGen", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(sequenceName = "manPowerIdGen", name = "manPowerIdGen", initialValue = 1, allocationSize = 1)
+	@SequenceGenerator(sequenceName = "manPowerIdGen", name = "manPowerIdGen", initialValue = 5000, allocationSize = 1)
 	@Column(name = "man-power-id")
 	private Integer manPowerId;
 	

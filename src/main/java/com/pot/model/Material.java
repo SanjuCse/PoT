@@ -16,7 +16,7 @@ import lombok.Data;
 public class Material {
 	@Id
 	@GeneratedValue(generator = "materialIdGen", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(sequenceName = "materialIdGen", name = "materialIdGen", initialValue = 1, allocationSize = 1)
+	@SequenceGenerator(sequenceName = "materialIdGen", name = "materialIdGen", initialValue = 2000, allocationSize = 1)
 	@Column(name = "material-id")
 	private Integer materialId;
 
@@ -53,7 +53,7 @@ public class Material {
 	@Column(name = "buildingId")
 	private Integer buildingId;
 
-	@JoinColumn(name = "building-id", referencedColumnName = "building-id")
-	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "building-id", referencedColumnName = "building-id")
+	@OneToOne(mappedBy = "material", cascade = CascadeType.ALL)
 	private Building building;
 }

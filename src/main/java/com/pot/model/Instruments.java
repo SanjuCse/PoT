@@ -16,7 +16,7 @@ import lombok.Data;
 public class Instruments {
 	@Id
 	@GeneratedValue(generator = "InstrIdGen", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(sequenceName = "InstrIdGen", name = "InstrIdGen", initialValue = 1, allocationSize = 1)
+	@SequenceGenerator(sequenceName = "InstrIdGen", name = "InstrIdGen", initialValue = 3000, allocationSize = 1)
 	@Column(name = "instr-id")
 	private Integer instrId;
 

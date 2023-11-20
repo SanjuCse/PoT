@@ -15,7 +15,7 @@ import lombok.Data;
 public class Machines {
 	@Id
 	@GeneratedValue(generator = "machineIdGen", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(sequenceName = "machineIdGen", name = "machineIdGen", initialValue = 1, allocationSize = 1)
+	@SequenceGenerator(sequenceName = "machineIdGen", name = "machineIdGen", initialValue = 4000, allocationSize = 1)
 	private Integer machineId;
 	
 	private Integer concreteMixer;

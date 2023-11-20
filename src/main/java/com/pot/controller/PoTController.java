@@ -64,6 +64,8 @@ public class PoTController {
 	@PostMapping("/add-material")
 	private String addMaterial(@ModelAttribute("material") Material material, RedirectAttributes attrs) {
 		material.setBuilding(buildingService.getBuildingByID(material.getBuildingId()));
+		System.out.println(buildingService.getBuildingByID(material.getBuildingId()));
+		System.out.println(material);
 		Boolean status = materialService.addMaterial(material);
 
 		if (status) {

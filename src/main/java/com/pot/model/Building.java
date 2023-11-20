@@ -22,7 +22,7 @@ import lombok.Data;
 public class Building {
 	@Id
 	@GeneratedValue(generator = "bidGen", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name = "bidGen", sequenceName = "bidGen", initialValue = 1, allocationSize = 1)
+	@SequenceGenerator(name = "bidGen", sequenceName = "bidGen", initialValue = 1000, allocationSize = 1)
 	@Column(name = "building-id")
 	private Integer buildingId;
 	
@@ -56,6 +56,8 @@ public class Building {
 	@Column(name = "is-Building-Details-Filled")
 	private Boolean isBuildingDetailsFilled;
 	
+	
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "machine-id", referencedColumnName = "machineId")
 	private Machines machines;
@@ -64,7 +66,6 @@ public class Building {
 	@JoinColumn(name = "instr-id", referencedColumnName = "instr-id")
 	private Instruments instruments;
 	
-	@MapsId
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "material-id", referencedColumnName = "material-id")
 	private Material material;
