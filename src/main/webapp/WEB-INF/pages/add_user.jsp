@@ -17,9 +17,9 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="adminHeader.jsp" />
 	<section>
-		<div class="container h-100">
+		<div class="container h-100 mt-5">
 			<div
 				class="row d-flex justify-content-center align-items-center h-100">
 				<div class="col-lg-12 col-xl-11">
@@ -29,7 +29,8 @@
 								<div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
 										Add New User</p>
-									<form:form cssClass="mx-1 mx-md-4" modelAttribute="user" method="post">
+									<form:form cssClass="mx-1 mx-md-4" modelAttribute="user"
+										method="post">
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-user fa-lg me-3 fa-fw"></i>
 											<div class="form-outline flex-fill mb-0">

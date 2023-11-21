@@ -49,7 +49,7 @@ public class PoTController {
 	}
 
 	@GetMapping("/add-material")
-	private String addMaterialPage(@ModelAttribute("material") Material material, Map<String, Object> map) { 
+	private String addMaterialPage(@ModelAttribute("material") Material material, Map<String, Object> map) {
 		map.put("buildings", buildingService.getAllBuildings());
 //		Material material2 = materialService.getMaterialByID(materialId);
 //		BeanUtils.copyProperties(material2, material);
@@ -106,10 +106,5 @@ public class PoTController {
 			attrs.addFlashAttribute("resultMsg", "Unable to add Instrumnets");
 		}
 		return "redirect:/materials";
-	}
-
-	@GetMapping("/about")
-	private String aboutPage() {
-		return "about";
 	}
 }

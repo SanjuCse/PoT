@@ -18,9 +18,54 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<style type="text/css">
+.form-check-input {
+	clear: left;
+}
+
+.form-switch.form-switch-sm {
+	margin-bottom: 0.5rem; /* JUST FOR STYLING PURPOSE */
+}
+
+.form-switch.form-switch-sm .form-check-input {
+	height: 1rem;
+	width: calc(1rem + 0.75rem);
+	border-radius: 2rem;
+}
+
+.form-switch.form-switch-md {
+	margin-bottom: 1rem; /* JUST FOR STYLING PURPOSE */
+}
+
+.form-switch.form-switch-md .form-check-input {
+	height: 1.5rem;
+	width: calc(2rem + 0.75rem);
+	border-radius: 3rem;
+}
+
+.form-switch.form-switch-lg {
+	margin-bottom: 1.5rem; /* JUST FOR STYLING PURPOSE */
+}
+
+.form-switch.form-switch-lg .form-check-input {
+	height: 2rem;
+	width: calc(3rem + 0.75rem);
+	border-radius: 4rem;
+}
+
+.form-switch.form-switch-xl {
+	margin-bottom: 2rem; /* JUST FOR STYLING PURPOSE */
+}
+
+.form-switch.form-switch-xl .form-check-input {
+	height: 2.5rem;
+	width: calc(4rem + 0.75rem);
+	border-radius: 5rem;
+}
+</style>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="adminHeader.jsp" />
 	<div class="px-4 py-5 my-5 text-center container">
 		<c:if test="${resultMsg != null}">
 			<div class="alert alert-success alert-dismissible">
@@ -38,6 +83,7 @@
 						<th>Email ID</th>
 						<th>Department</th>
 						<th>Address</th>
+						<th>is Admin?</th>
 						<th>Edit User</th>
 						<th>Delete</th>
 					</tr>
@@ -47,6 +93,25 @@
 							<td>${user.email}</td>
 							<td>${user.dept}</td>
 							<td>${user.address}</td>
+							<td>
+								<c:if test="${user.isAdmin}">
+									<div class="form-check form-switch form-switch-lg">
+										<input class="form-check-input" type="checkbox"
+											id="flexSwitchCheckChecked" checked disabled="disabled">
+										<label class="form-check-label" for="flexSwitchCheckChecked"></label>
+									</div>
+								</c:if>
+							</td>
+							<td>
+								<c:if test="${!user.isAdmin}">
+									<div class="form-check form-switch form-switch-lg">
+										<input class="form-check-input" type="checkbox"
+											id="flexSwitchCheckChecked"> <label
+											class="form-check-label" for="flexSwitchCheckChecked"
+											disabled="disabled"></label>
+									</div>
+								</c:if>
+							</td>
 							<td><a href="edit_user?uid=${user.uid}" type="button"
 								class="btn btn-primary"><span class="bi bi-pencil"></span>
 									Edit</a></td>
@@ -62,9 +127,9 @@
 				<h1 style="color: red; text-align: center">Records not found</h1>
 			</c:otherwise>
 		</c:choose>
-<!-- 		<blink> -->
-<%-- 			<h1 style="color: green; text-align: center">${resultMsg}</h1> --%>
-<!-- 		</blink> -->
+		<!-- 		<blink> -->
+		<%-- 			<h1 style="color: green; text-align: center">${resultMsg}</h1> --%>
+		<!-- 		</blink> -->
 		<br>
 		<h1 style="text-align: center">
 			<a href="add" type="button" class="btn btn-success"><span

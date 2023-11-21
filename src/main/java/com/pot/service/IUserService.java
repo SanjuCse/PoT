@@ -17,5 +17,4 @@ public interface IUserService {
 	Boolean deleteEmployeeByEno(int id);
 
 	Boolean isAdmin(String email);
-
 }

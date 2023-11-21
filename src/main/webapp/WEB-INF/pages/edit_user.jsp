@@ -17,9 +17,9 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="adminHeader.jsp" />
 	<section>
-		<div class="container h-100">
+		<div class="container h-100 mt-5">
 			<div
 				class="row d-flex justify-content-center align-items-center h-100">
 				<div class="col-lg-12 col-xl-11">

@@ -28,7 +28,9 @@ import jakarta.servlet.http.HttpSession;
 public class UserController {
 
 	@Autowired
-	private IUserService service;
+	private IUserService userService;
+
+	static Boolean isAdmin = false;
 
 	@GetMapping("/")
 	public String indexPage(Model model) {
@@ -43,13 +45,14 @@ public class UserController {
 
 	@PostMapping("/")
 	public String loginPage(@ModelAttribute("login") UserLogin login, RedirectAttributes attrs,
-			HttpServletRequest request, HttpServletResponse response) {
-		if (service.login(login)) {
-//			HttpSession session = request.getSession();
-//			if (session.getId() == null) {
-//				session.setAttribute("session", session);
-//			}
+			HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+		if (userService.login(login)) {
+			map.put("isAdmin", userService.isAdmin(login.getEmail()));
+			isAdmin = userService.isAdmin(login.getEmail());
 			attrs.addFlashAttribute("resultMsg", "User Login Successfull");
+			if (isAdmin) {
+				return "forward:/users";
+			}
 			return "forward:/home";
 		} else {
 			attrs.addFlashAttribute("resultMsg", "User Login Failed");
@@ -64,7 +67,7 @@ public class UserController {
 
 	@PostMapping("/add")
 	public String registerPagePost(@ModelAttribute("user") User user, RedirectAttributes attrs) {
-		Boolean isReg = service.regUser(user);
+		Boolean isReg = userService.regUser(user);
 
 		if (isReg) {
 			attrs.addFlashAttribute("resultMsg", "User Registration Successfull");
@@ -76,7 +79,16 @@ public class UserController {
 
 	@GetMapping("/users")
 	public String usersPage(Map<String, Object> map) {
-		List<User> users = service.getAllUsers();
+		List<User> users = userService.getAllUsers();
+		map.put("isAdmin", isAdmin);
+		map.put("users", users);
+		return "users";
+	}
+
+	@PostMapping("/users")
+	public String usersPostPage(Map<String, Object> map) {
+		List<User> users = userService.getAllUsers();
+		map.put("isAdmin", isAdmin);
 		map.put("users", users);
 		return "users";
 	}
@@ -84,7 +96,7 @@ public class UserController {
 	@GetMapping("/edit_user")
 	public String showEditEmployeeFormPage(@RequestParam("uid") int id, @ModelAttribute("user") User user) {
 		// use serivce
-		User user2 = service.getEmployeeById(id);
+		User user2 = userService.getEmployeeById(id);
 		BeanUtils.copyProperties(user2, user);
 		// return lvn
 		return "edit_user";
@@ -93,7 +105,7 @@ public class UserController {
 	@PostMapping("/edit_user")
 	public String editEmployee(RedirectAttributes attrs, @ModelAttribute("user") User user) {
 		// use service
-		boolean status = service.regUser(user);
+		boolean status = userService.regUser(user);
 		// keep results in model attributes
 		if (status) {
 			attrs.addFlashAttribute("resultMsg", "User Details Updated");
@@ -107,7 +119,7 @@ public class UserController {
 	@GetMapping("/delete_user")
 	public String deleteEmployee(@RequestParam("uid") int uid, RedirectAttributes attrs) {
 		// use service
-		Boolean status = service.deleteEmployeeByEno(uid);
+		Boolean status = userService.deleteEmployeeByEno(uid);
 		// keep results in model attributes
 		if (status) {
 			attrs.addFlashAttribute("resultMsg", "User Deleted Successfully");
@@ -116,6 +128,19 @@ public class UserController {
 		}
 		// return LVN
 		return "redirect:users";
+	}
+
+	@GetMapping("/about")
+	private String aboutPage() {
+		return "about";
+	}
+	
+	@GetMapping("/adminAbout")
+	private String adminAboutPage() {
+//		if (isAdmin) {
+//			return "adminAbout";
+//		}
+		return "adminAbout";
 	}
 
 	@GetMapping("/logout")
