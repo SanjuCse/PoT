@@ -56,28 +56,16 @@ public class Building {
 	@Column(name = "is-Building-Details-Filled")
 	private Boolean isBuildingDetailsFilled;
 
-//	private Integer machineId;
-//	
-//	private Integer instrumentId;
-//	
-//	private Integer materialId;
-//	
-//	private Integer manPowerId;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "machine-id", referencedColumnName = "machineId")
+	@OneToOne(mappedBy = "building")
 	private Machines machines;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "instr-id", referencedColumnName = "instr-id")
+	@OneToOne(mappedBy = "building")
 	private Instruments instruments;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "material-id", referencedColumnName = "material-id")
+	@OneToOne(mappedBy = "building")
 	private Material material;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "man-power-id", referencedColumnName = "man-power-id")
+	@OneToOne(mappedBy = "building")
 	private ManPower manPower;
 
 	@CreationTimestamp

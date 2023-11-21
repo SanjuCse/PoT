@@ -53,7 +53,7 @@ public class Material {
 	@Column(name = "buildingId")
 	private Integer buildingId;
 
-//	@JoinColumn(name = "building-id", referencedColumnName = "building-id")
-	@OneToOne(mappedBy = "material", cascade = CascadeType.ALL)
+	@JoinColumn(name = "building-id", referencedColumnName = "building-id")
+	@OneToOne(cascade = CascadeType.ALL)
 	private Building building;
 }
