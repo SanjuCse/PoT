@@ -76,7 +76,8 @@
 		<h1 class="display-5 fw-bold">PoT - Users List</h1>
 		<c:choose>
 			<c:when test="${!empty users}">
-				<table class="table table-striped">
+				<table border="1" bgcolor="cyan" align="center"
+					class="table table-striped">
 					<tr bgcolor="pink">
 						<th>User Name</th>
 						<th>Email ID</th>
@@ -87,26 +88,30 @@
 						<th>Delete</th>
 					</tr>
 					<c:forEach var="user" items="${users}">
-						<tr class="mb-1">
+						<tr>
 							<td>${user.userName}</td>
 							<td>${user.email}</td>
 							<td>${user.dept}</td>
 							<td>${user.address}</td>
-							<td class="d-flex justify-content-center"><c:if
-									test="${user.isAdmin}">
+							<td>
+								<c:if test="${user.isAdmin}">
 									<div class="form-check form-switch form-switch-lg">
 										<input class="form-check-input" type="checkbox"
 											id="flexSwitchCheckChecked" checked disabled="disabled">
 										<label class="form-check-label" for="flexSwitchCheckChecked"></label>
 									</div>
-								</c:if> <c:if test="${!user.isAdmin}">
+								</c:if>
+							</td>
+							<td>
+								<c:if test="${!user.isAdmin}">
 									<div class="form-check form-switch form-switch-lg">
 										<input class="form-check-input" type="checkbox"
-											id="flexSwitchCheckChecked" disabled="disabled"> <label
+											id="flexSwitchCheckChecked"> <label
 											class="form-check-label" for="flexSwitchCheckChecked"
-											></label>
+											disabled="disabled"></label>
 									</div>
-								</c:if></td>
+								</c:if>
+							</td>
 							<td><a href="edit_user?uid=${user.uid}" type="button"
 								class="btn btn-primary"><span class="bi bi-pencil"></span>
 									Edit</a></td>

@@ -9,14 +9,24 @@
 	</a>
 
 	<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-		<!-- <form method="post" action="/home">
+		<form method="post" action="/home">
 			<li><input type="submit" class="nav-link px-2 link-secondary"
 				value="Home"></li>
-			<a href="/home" class="nav-link px-2 link-secondary">Home</a>
-		</form> -->
+			<!-- <a href="/home" class="nav-link px-2 link-secondary">Home</a> -->
+		</form>
 		<!-- 		<li><a href="/home" class="nav-link px-2 link-dark">Home</a></li> -->
-		<li><a href="/users" class="nav-link px-2 link-dark">Users</a></li>
-		<li><a href="/adminAbout" class="nav-link px-2 link-dark">About</a></li>
+		<c:if test="${isAdmin}">
+			<li><a href="/users" class="nav-link px-2 link-dark">Users</a></li>
+		</c:if>
+		<c:if test="${!isAdmin}">
+			<li><a href="/building" class="nav-link px-2 link-dark">Building</a></li>
+			<li><a href="/add-material" class="nav-link px-2 link-dark">Material</a></li>
+			<li><a href="/machines" class="nav-link px-2 link-dark">Machines</a></li>
+			<li><a href="/instruments" class="nav-link px-2 link-dark">Instruments</a></li>
+			<li><a href="/manpower" class="nav-link px-2 link-dark">Man
+					Power</a></li>
+			<li><a href="/about" class="nav-link px-2 link-dark">About</a></li>
+		</c:if>
 	</ul>
 
 	<div class="col-md-3 text-end">

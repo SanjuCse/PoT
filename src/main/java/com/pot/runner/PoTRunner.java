@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.pot.contracts.UserLogin;
+import com.pot.model.User;
 import com.pot.service.IInstrumentService;
 import com.pot.service.IMaterialService;
 import com.pot.service.IUserService;

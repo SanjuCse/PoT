@@ -9,11 +9,11 @@
 	</a>
 
 	<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-		<!-- <form method="post" action="/home">
+		<form method="post" action="/home">
 			<li><input type="submit" class="nav-link px-2 link-secondary"
 				value="Home"></li>
-			<a href="/home" class="nav-link px-2 link-secondary">Home</a>
-		</form> -->
+			<!-- <a href="/home" class="nav-link px-2 link-secondary">Home</a> -->
+		</form>
 		<!-- 		<li><a href="/home" class="nav-link px-2 link-dark">Home</a></li> -->
 		<li><a href="/users" class="nav-link px-2 link-dark">Users</a></li>
 		<li><a href="/adminAbout" class="nav-link px-2 link-dark">About</a></li>
