@@ -1,14 +1,21 @@
 package com.pot.runner;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.pot.contracts.UserLogin;
+import com.pot.controller.UserController;
+import com.pot.model.Building;
 import com.pot.model.User;
+import com.pot.service.IBuildingService;
 import com.pot.service.IInstrumentService;
 import com.pot.service.IMaterialService;
 import com.pot.service.IUserService;
+
+import jakarta.transaction.Transactional;
 
 @Component
 public class PoTRunner implements CommandLineRunner {
@@ -20,6 +27,9 @@ public class PoTRunner implements CommandLineRunner {
 
 	@Autowired
 	private IUserService userService;
+
+	@Autowired
+	private IBuildingService buildingService;
 
 //	@Override
 //	public void run(String... args) throws Exception {
@@ -99,6 +109,10 @@ public class PoTRunner implements CommandLineRunner {
 		} else {
 			System.out.println("Login Failed");
 		}
+
+		List<Building> listBuilding = buildingService.findAllBuildingsByUser(userService.getUserById(102));
+		System.out.println(listBuilding);
+//		System.out.println(buildingService.getBuildingByID(UserController.currentLoggedUser.getUid()));
 	}
 
 }

@@ -32,6 +32,8 @@ public class UserController {
 
 	static Boolean isAdmin = false;
 
+	static User currentLoggedUser;
+
 	@GetMapping("/")
 	public String indexPage(Model model) {
 		model.addAttribute("login", new UserLogin());
@@ -50,6 +52,7 @@ public class UserController {
 			map.put("isAdmin", userService.isAdmin(login.getEmail()));
 			isAdmin = userService.isAdmin(login.getEmail());
 			attrs.addFlashAttribute("resultMsg", "User Login Successfull");
+			currentLoggedUser = userService.getUserByEmailID(login.getEmail());
 			if (isAdmin) {
 				return "forward:/users";
 			}
@@ -96,7 +99,7 @@ public class UserController {
 	@GetMapping("/edit_user")
 	public String showEditEmployeeFormPage(@RequestParam("uid") int id, @ModelAttribute("user") User user) {
 		// use serivce
-		User user2 = userService.getEmployeeById(id);
+		User user2 = userService.getUserById(id);
 		BeanUtils.copyProperties(user2, user);
 		// return lvn
 		return "edit_user";
@@ -119,7 +122,7 @@ public class UserController {
 	@GetMapping("/delete_user")
 	public String deleteEmployee(@RequestParam("uid") int uid, RedirectAttributes attrs) {
 		// use service
-		Boolean status = userService.deleteEmployeeByEno(uid);
+		Boolean status = userService.deleteUserByEno(uid);
 		// keep results in model attributes
 		if (status) {
 			attrs.addFlashAttribute("resultMsg", "User Deleted Successfully");
@@ -134,7 +137,7 @@ public class UserController {
 	private String aboutPage() {
 		return "about";
 	}
-	
+
 	@GetMapping("/adminAbout")
 	private String adminAboutPage() {
 //		if (isAdmin) {

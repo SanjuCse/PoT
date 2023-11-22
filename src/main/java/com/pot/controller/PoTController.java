@@ -12,9 +12,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.pot.model.Building;
 import com.pot.model.Instruments;
 import com.pot.model.Material;
+import com.pot.model.User;
 import com.pot.service.IBuildingService;
 import com.pot.service.IInstrumentService;
 import com.pot.service.IMaterialService;
+import com.pot.service.IUserService;
 
 @Controller
 public class PoTController {
@@ -26,6 +28,9 @@ public class PoTController {
 
 	@Autowired
 	private IBuildingService buildingService;
+
+	@Autowired
+	private IUserService userService;
 
 //	@GetMapping("/")
 //	private String homePage() {
@@ -39,7 +44,10 @@ public class PoTController {
 
 	@PostMapping("/building")
 	private String addBuildingPostPage(@ModelAttribute("building") Building building, RedirectAttributes attrs) {
+		building.setUser(UserController.currentLoggedUser);
 		Boolean isBuildingDetailsAdded = buildingService.addBuilding(building);
+//		System.out.println(buildingService.getBuildingByID(UserController.currentLoggedUser.getUid()));
+//		System.out.println(buildingService.findAllBuildingsByUser(UserController.currentLoggedUser.getUid()));
 		if (isBuildingDetailsAdded) {
 			attrs.addFlashAttribute("resultMsg", "Building Details Added Successfully");
 		} else {

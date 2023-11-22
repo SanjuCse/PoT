@@ -118,17 +118,6 @@
 													class="form-control" />
 											</div>
 										</div>
-										<div
-											class="d-flex flex-row align-items-center form-check form-switch mt-2">
-											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-											<div class="form-outline flex-fill mb-0">
-												<input class="form-check-input" type="checkbox"
-													role="switch" id="flexSwitchCheckDefault" /> <label
-													class="form-check-label" for="flexSwitchCheckDefault">Is
-													Building Data filled</label>
-
-											</div>
-										</div>
 										<div class="d-flex text-center justify-content-center mt-3">
 											<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
 												<button type="submit" class="btn btn-primary">Add

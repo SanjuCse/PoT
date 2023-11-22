@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.pot.model.Building;
 import com.pot.model.Material;
+import com.pot.model.User;
 import com.pot.repo.BuildingRepo;
 
 import jakarta.transaction.Transactional;
@@ -16,6 +17,9 @@ import jakarta.transaction.Transactional;
 public class BuildingMgmtServiceImpl implements IBuildingService {
 	@Autowired
 	private BuildingRepo buildingRepo;
+
+	@Autowired
+	private IUserService userService;
 
 	@Override
 	public Boolean addBuilding(Building building) {
@@ -36,4 +40,18 @@ public class BuildingMgmtServiceImpl implements IBuildingService {
 	public Integer updateMaterialByBuildingID(Material material, Integer buildingId) {
 		return buildingRepo.updateMaterialByBuildingID(material, buildingId);
 	}
+	
+	@Override
+	public List<Building> findAllBuildingsByUser(User user) {
+		return buildingRepo.findAllBuildingsByUser(user);
+	}
+
+//	@Override
+//	public List<Building> getAllBuildingsByUserID(Integer uid) {
+//		Building building = new Building();
+//		building.setUser(userService.getUserById(uid));
+//		Example<Building> userEx = Example.of(building);
+//		return buildingRepo.findAll(userEx);
+//	}
+
 }

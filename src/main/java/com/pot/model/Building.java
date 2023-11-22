@@ -8,10 +8,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
@@ -53,9 +55,6 @@ public class Building {
 	@Column(name = "building-height")
 	private Double height;
 
-	@Column(name = "is-Building-Details-Filled")
-	private Boolean isBuildingDetailsFilled;
-
 	@OneToOne(mappedBy = "building")
 	private Machines machines;
 
@@ -67,6 +66,10 @@ public class Building {
 
 	@OneToOne(mappedBy = "building")
 	private ManPower manPower;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user-id") // , nullable = false
+	private User user;
 
 	@CreationTimestamp
 	private LocalDateTime createdDateAndTime;
