@@ -172,6 +172,7 @@ public class UserController {
 		response.setStatus(307); // this makes the redirection keep your requesting method as is.
 		response.addHeader("Location", "http://localhost:8080/");
 		attrs.addFlashAttribute("resultMsg", "Logout Successfull");
+		currentLoggedUser = null;
 		return "redirect:/";
 	}
 

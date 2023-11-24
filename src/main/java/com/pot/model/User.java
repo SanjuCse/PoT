@@ -41,6 +41,6 @@ public class User {
 	@Column(name = "isAdmin")
 	private Boolean isAdmin = false;
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Building> buildings;
 }
