@@ -110,7 +110,7 @@ public class PoTRunner implements CommandLineRunner {
 			System.out.println("Login Failed");
 		}
 
-		List<Building> listBuilding = buildingService.findAllBuildingsByUser(userService.getUserById(102));
+		List<Building> listBuilding = buildingService.findAllBuildingsByUser(userService.getUserById(101));
 		System.out.println(listBuilding);
 //		System.out.println(buildingService.getBuildingByID(UserController.currentLoggedUser.getUid()));
 	}

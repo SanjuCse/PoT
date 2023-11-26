@@ -3,6 +3,7 @@ package com.pot.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.pot.model.Building;
@@ -33,25 +34,25 @@ public class BuildingMgmtServiceImpl implements IBuildingService {
 
 	@Override
 	public Building getBuildingByID(Integer buildingID) {
-		return buildingRepo.getById(buildingID);
+		return buildingRepo.getReferenceById(buildingID);
 	}
 
 	@Override
 	public Integer updateMaterialByBuildingID(Material material, Integer buildingId) {
 		return buildingRepo.updateMaterialByBuildingID(material, buildingId);
 	}
-	
+
 	@Override
 	public List<Building> findAllBuildingsByUser(User user) {
 		return buildingRepo.findAllBuildingsByUser(user);
 	}
 
-//	@Override
-//	public List<Building> getAllBuildingsByUserID(Integer uid) {
-//		Building building = new Building();
-//		building.setUser(userService.getUserById(uid));
-//		Example<Building> userEx = Example.of(building);
-//		return buildingRepo.findAll(userEx);
-//	}
+	@Override
+	public List<Building> getAllBuildingsByUserID(Integer uid) {
+		Building building = new Building();
+		building.setUser(userService.getUserById(uid));
+		Example<Building> userEx = Example.of(building);
+		return buildingRepo.findAll(userEx);
+	}
 
 }

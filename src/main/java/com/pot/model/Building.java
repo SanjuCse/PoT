@@ -8,19 +8,19 @@ import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Building {
 	@Id
 	@GeneratedValue(generator = "bidGen", strategy = GenerationType.SEQUENCE)
@@ -67,8 +67,8 @@ public class Building {
 	@OneToOne(mappedBy = "building")
 	private ManPower manPower;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user-id") // , nullable = false
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH })
+	@JoinColumn(name = "user-id")
 	private User user;
 
 	@CreationTimestamp

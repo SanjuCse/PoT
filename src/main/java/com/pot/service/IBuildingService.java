@@ -14,8 +14,8 @@ public interface IBuildingService {
 	Building getBuildingByID(Integer buildingID);
 
 	Integer updateMaterialByBuildingID(Material material, Integer buildingId);
-	
+
 	List<Building> findAllBuildingsByUser(User user);
-	
-//	List<Building> getAllBuildingsByUserID(Integer uid);
+
+	List<Building> getAllBuildingsByUserID(Integer uid);
 }

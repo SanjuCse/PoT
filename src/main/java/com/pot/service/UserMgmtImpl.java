@@ -50,7 +50,7 @@ public class UserMgmtImpl implements IUserService {
 
 	@Override
 	public User getUserById(int id) {
-		return userRepo.getById(id);
+		return userRepo.getReferenceById(id);
 	}
 
 	@Override
