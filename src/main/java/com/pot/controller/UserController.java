@@ -32,7 +32,7 @@ public class UserController {
 
 	static Boolean isAdmin = false;
 
-	static User currentLoggedUser;
+	public static User currentLoggedUser;
 
 	@GetMapping("/")
 	public String indexPage(Model model) {

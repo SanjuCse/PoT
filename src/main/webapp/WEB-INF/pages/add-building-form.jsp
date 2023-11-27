@@ -26,7 +26,7 @@
 					<div class="card text-black" style="border-radius: 25px">
 						<div class="card-body p-md-5">
 							<div class="row justify-content-center">
-								<div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+								<div class="order-2 order-lg-1"> <!-- col-md-10 col-lg-6 col-xl-5 -->
 									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
 										Add Building Details</p>
 									<form:form cssClass="mx-1 mx-md-4" modelAttribute="building"
@@ -97,25 +97,33 @@
 										</div>
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-											<div>
+											<div class="form-outline flex-fill mb-0">
 												<label class="form-label" for="form3Example4c">Building
-													Cost</label>
+													Height in Meter</label>
+												<form:input path="height" type="number" id="form3Example4c"
+													class="form-control" />
+											</div>
+										</div>
+										<div class="d-flex flex-row align-items-center row">
+											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+<!-- 											<div> -->
+												<label class="form-label" for="form3Example4c">Building
+													Cost in-$</label>
 												<div class="input-group form-outline flex-fill mb-0">
 													<span class="input-group-text">$</span>
 													<form:input path="cost" type="number" id="form3Example4c"
 														class="form-control" />
 													<span class="input-group-text">.00</span>
 												</div>
-											</div>
+<!-- 											</div> -->
 
 										</div>
-										<div class="d-flex flex-row align-items-center">
-											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label" for="form3Example4c">Building
-													Height</label>
-												<form:input path="height" type="number" id="form3Example4c"
-													class="form-control" />
+										<div class="align-items-center">
+											<div class="mb-3">
+												<label for="exampleFormControlTextarea1" class="form-label">Some Remarks
+													</label>
+												<form:textarea class="form-control" path="remarks"
+													id="exampleFormControlTextarea1" rows="3"></form:textarea>
 											</div>
 										</div>
 										<div class="d-flex text-center justify-content-center mt-3">

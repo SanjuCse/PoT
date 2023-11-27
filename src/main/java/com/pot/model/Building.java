@@ -54,6 +54,9 @@ public class Building {
 
 	@Column(name = "building-height")
 	private Double height;
+	
+	@Column(name = "remarks")
+	private String remarks;
 
 	@OneToOne(mappedBy = "building")
 	private Machines machines;

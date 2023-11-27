@@ -19,7 +19,7 @@
 			<li><a href="/users" class="nav-link px-2 link-dark">Users</a></li>
 		</c:if>
 		<c:if test="${!isAdmin}">
-			<li><a href="/building" class="nav-link px-2 link-dark">Building</a></li>
+			<li><a href="/buildings" class="nav-link px-2 link-dark">Building</a></li>
 			<li><a href="/add-material" class="nav-link px-2 link-dark">Material</a></li>
 			<li><a href="/machines" class="nav-link px-2 link-dark">Machines</a></li>
 			<li><a href="/instruments" class="nav-link px-2 link-dark">Instruments</a></li>

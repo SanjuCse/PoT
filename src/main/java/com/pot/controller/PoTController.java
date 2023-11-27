@@ -44,16 +44,35 @@ public class PoTController {
 
 	@PostMapping("/building")
 	private String addBuildingPostPage(@ModelAttribute("building") Building building, RedirectAttributes attrs) {
-		building.setUser(UserController.currentLoggedUser);
+		building.setUser(new UserController().currentLoggedUser);
 		Boolean isBuildingDetailsAdded = buildingService.addBuilding(building);
-//		System.out.println(buildingService.getBuildingByID(UserController.currentLoggedUser.getUid()));
-//		System.out.println(buildingService.findAllBuildingsByUser(UserController.currentLoggedUser.getUid()));
 		if (isBuildingDetailsAdded) {
 			attrs.addFlashAttribute("resultMsg", "Building Details Added Successfully");
 		} else {
 			attrs.addFlashAttribute("resultMsg", "Unable to Add Building Details");
 		}
-		return "redirect:/";
+		return "redirect:/buildings";
+	}
+
+	@GetMapping("/buildings")
+	private String buildingsPage(@ModelAttribute("building") Building building, Map<String, Object> map) {
+		map.put("buildings", buildingService.getAllBuildingsByUserID(new UserController().currentLoggedUser.getUid()));
+		return "buildings";
+	}
+
+	@PostMapping("/buildings")
+	private String buildingsPostPage(@ModelAttribute("building") Building building, RedirectAttributes attrs,
+			Map<String, Object> map) {
+//		building.setUser(UserController.currentLoggedUser);
+		System.out.println(building.getBuildingId() + " " + building.getBuildingName() + " "
+				+ building.getBuildingOwnerName());
+		Boolean isBuildingDetailsAdded = buildingService.addBuilding(building);
+		if (isBuildingDetailsAdded) {
+			attrs.addFlashAttribute("resultMsg", "Building Details Updated Successfully");
+		} else {
+			attrs.addFlashAttribute("resultMsg", "Unable to Update Building Details");
+		}
+		return "redirect:/buildings";
 	}
 
 	@GetMapping("/add-material")
