@@ -1,21 +1,26 @@
 package com.pot.runner;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+import org.joda.time.DateTimeZone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.pot.contracts.UserLogin;
-import com.pot.controller.UserController;
 import com.pot.model.Building;
 import com.pot.model.User;
 import com.pot.service.IBuildingService;
 import com.pot.service.IInstrumentService;
 import com.pot.service.IMaterialService;
 import com.pot.service.IUserService;
-
-import jakarta.transaction.Transactional;
+import com.pot.utils.DateTimeUtil;
 
 @Component
 public class PoTRunner implements CommandLineRunner {
@@ -112,7 +117,14 @@ public class PoTRunner implements CommandLineRunner {
 
 		List<Building> listBuilding = buildingService.findAllBuildingsByUser(userService.getUserById(101));
 		System.out.println(listBuilding);
-//		System.out.println(buildingService.getBuildingByID(UserController.currentLoggedUser.getUid()));
-	}
 
+		List<User> users = userService.getAllUsers();
+		for (User usr : users) {
+//			System.out.println(usr.getCreatedDate().toLocalDate() + " "
+//					+ usr.getCreatedDate().toLocalTime().truncatedTo(ChronoUnit.SECONDS));
+//			System.out.println(usr.getCreatedDate().now(ZoneOffset.UTC));
+			System.out.println(DateTimeUtil.getCurrentUtcTime(usr.getCreatedDate()));
+		}
+//		System.out.println(LocalDateTime.now(ZoneOffset.UTC));
+	}
 }

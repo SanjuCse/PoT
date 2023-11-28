@@ -51,8 +51,8 @@ public class UserController {
 		if (userService.login(login)) {
 			map.put("isAdmin", userService.isAdmin(login.getEmail()));
 			isAdmin = userService.isAdmin(login.getEmail());
-			attrs.addFlashAttribute("resultMsg", "User Login Successfull");
 			currentLoggedUser = userService.getUserByEmailID(login.getEmail());
+			attrs.addFlashAttribute("resultMsg", "User Login Successfull");
 			if (isAdmin) {
 				return "forward:/users";
 			}
@@ -108,7 +108,10 @@ public class UserController {
 	@PostMapping("/edit_user")
 	public String editEmployee(RedirectAttributes attrs, @ModelAttribute("user") User user) {
 		// use service
-		boolean status = userService.regUser(user);
+		User user2 = new User();
+		BeanUtils.copyProperties(user, user2);
+		user2.setCreatedDate(userService.getUserById(user.getUid()).getCreatedDate());
+		boolean status = userService.regUser(user2);
 		// keep results in model attributes
 		if (status) {
 			attrs.addFlashAttribute("resultMsg", "User Details Updated");
@@ -172,7 +175,7 @@ public class UserController {
 		response.setStatus(307); // this makes the redirection keep your requesting method as is.
 		response.addHeader("Location", "http://localhost:8080/");
 		attrs.addFlashAttribute("resultMsg", "Logout Successfull");
-		currentLoggedUser = null;
+//		currentLoggedUser = null;
 		return "redirect:/";
 	}
 

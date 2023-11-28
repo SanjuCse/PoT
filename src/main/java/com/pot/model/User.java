@@ -1,7 +1,15 @@
 
 package com.pot.model;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.joda.time.DateTime;
+import org.springframework.data.annotation.CreatedDate;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -42,7 +50,13 @@ public class User {
 
 	@Column(name = "isAdmin")
 	private Boolean isAdmin = false;
-
+	
+	@CreationTimestamp
+	private LocalDateTime createdDate; //= LocalDateTime.now(ZoneId.SHORT_IDS)
+	
+	@UpdateTimestamp
+	private LocalDateTime updatedDate;
+	
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Building> buildings;
 }

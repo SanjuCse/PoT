@@ -1,7 +1,9 @@
 package com.pot.controller;
 
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,8 +66,8 @@ public class PoTController {
 	private String buildingsPostPage(@ModelAttribute("building") Building building, RedirectAttributes attrs,
 			Map<String, Object> map) {
 //		building.setUser(UserController.currentLoggedUser);
-		System.out.println(building.getBuildingId() + " " + building.getBuildingName() + " "
-				+ building.getBuildingOwnerName());
+		Building building2 = buildingService.getByBuildingNameAndUser(building.getBuildingName(), UserController.currentLoggedUser).get(0);
+		BeanUtils.copyProperties(building, building2, "buildingId", "user");
 		Boolean isBuildingDetailsAdded = buildingService.addBuilding(building);
 		if (isBuildingDetailsAdded) {
 			attrs.addFlashAttribute("resultMsg", "Building Details Updated Successfully");

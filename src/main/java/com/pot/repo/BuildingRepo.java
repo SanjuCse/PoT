@@ -18,4 +18,8 @@ public interface BuildingRepo extends JpaRepository<Building, Integer> {
 	
 	@Query("SELECT b FROM Building b WHERE b.user = ?1")
 	List<Building> findAllBuildingsByUser(User user);
+	
+	List<Building> getByBuildingName(String buildingName);
+	
+	List<Building> getByBuildingNameAndUser(String buildingName, User user);
 }

@@ -55,4 +55,13 @@ public class BuildingMgmtServiceImpl implements IBuildingService {
 		return buildingRepo.findAll(userEx);
 	}
 
+	@Override
+	public List<Building> getByBuildingName(String buildingName) {
+		return buildingRepo.getByBuildingName(buildingName);
+	}
+	
+	@Override
+	public List<Building> getByBuildingNameAndUser(String buildingName, User user) {
+		return buildingRepo.getByBuildingNameAndUser(buildingName, user);
+	}
 }

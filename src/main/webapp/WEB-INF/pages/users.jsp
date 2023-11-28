@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="java.time.temporal.ChronoUnit"%>
+<%@page import="java.time.ZoneOffset"%>
+<%@page import="com.pot.utils.DateTimeUtil"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,10 +66,21 @@
 	border-radius: 5rem;
 }
 </style>
+<script type="text/javascript">
+	function toLocalDate(params) {
+		var utcDate = document.getElementById("createdDate");
+		var localDate = new Date(utcDate);
+	}
+
+	function toLocalTime(dateTime) {
+		var localDate = new Date(dateTime+'Z');
+		console.log(localDate);
+	}
+</script>
 </head>
 <body>
 	<jsp:include page="adminHeader.jsp" />
-	<div class="px-4 py-5 my-5 text-center container">
+	<div class="px-4 py-5 my-5 text-center">
 		<c:if test="${resultMsg != null}">
 			<div class="alert alert-success alert-dismissible">
 				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -76,13 +90,15 @@
 		<h1 class="display-5 fw-bold">PoT - Users List</h1>
 		<c:choose>
 			<c:when test="${!empty users}">
-				<table class="table table-striped">
-					<tr bgcolor="pink">
+				<table class="table table-lg table-striped">
+					<tr>
 						<th>User Name</th>
 						<th>Email ID</th>
 						<th>Department</th>
 						<th>Address</th>
 						<th>is Admin?</th>
+						<th>Created Date &amp; Time</th>
+						<th>Updated Date &amp; Time</th>
 						<th>Edit User</th>
 						<th>Delete</th>
 					</tr>
@@ -103,10 +119,18 @@
 									<div class="form-check form-switch form-switch-lg">
 										<input class="form-check-input" type="checkbox"
 											id="flexSwitchCheckChecked" disabled="disabled"> <label
-											class="form-check-label" for="flexSwitchCheckChecked"
-											></label>
+											class="form-check-label" for="flexSwitchCheckChecked"></label>
 									</div>
 								</c:if></td>
+								<%-- 
+									<td id="createdDate">${user.createdDate.toLocalDate()}&nbsp;&nbsp;${user.createdDate.toLocalTime().truncatedTo(ChronoUnit.SECONDS)}</td>
+									<td id="updatedDate">${user.updatedDate.toLocalDate()}&nbsp;&nbsp;${user.updatedDate.toLocalTime().truncatedTo(ChronoUnit.SECONDS)}</td> 
+									<td id="createdDate">${user.createdDate.atZone(ZoneOffset.UTC)}</td>
+									<td id="updatedDate">${user.updatedDate.atZone(ZoneOffset.UTC)}</td>
+								--%>
+									<td id="createdDate" onload="toLocalTime('${DateTimeUtil.getCurrentUtcTime(user.createdDate)}')">${DateTimeUtil.getCurrentUtcTime(user.createdDate)}</td>
+									<td id="updatedDate">${DateTimeUtil.getCurrentUtcTime(user.updatedDate)}</td>
+									
 							<td><a href="edit_user?uid=${user.uid}" type="button"
 								class="btn btn-primary"><span class="bi bi-pencil"></span>
 									Edit</a></td>
