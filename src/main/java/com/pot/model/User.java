@@ -52,7 +52,7 @@ public class User {
 	private Boolean isAdmin = false;
 	
 	@CreationTimestamp
-	private LocalDateTime createdDate; //= LocalDateTime.now(ZoneId.SHORT_IDS)
+	private LocalDateTime createdDate;
 	
 	@UpdateTimestamp
 	private LocalDateTime updatedDate;
