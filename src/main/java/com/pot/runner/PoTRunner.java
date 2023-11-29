@@ -125,6 +125,6 @@ public class PoTRunner implements CommandLineRunner {
 //			System.out.println(usr.getCreatedDate().now(ZoneOffset.UTC));
 			System.out.println(DateTimeUtil.getCurrentUtcTime(usr.getCreatedDate()));
 		}
-//		System.out.println(LocalDateTime.now(ZoneOffset.UTC));
+		System.out.println(LocalDateTime.now(ZoneOffset.UTC));
 	}
 }

@@ -66,17 +66,6 @@
 	border-radius: 5rem;
 }
 </style>
-<script type="text/javascript">
-	function toLocalDate(params) {
-		var utcDate = document.getElementById("createdDate");
-		var localDate = new Date(utcDate);
-	}
-
-	function toLocalTime(dateTime) {
-		var localDate = new Date(dateTime+'Z');
-		console.log(localDate);
-	}
-</script>
 </head>
 <body>
 	<jsp:include page="adminHeader.jsp" />
@@ -128,7 +117,7 @@
 									<td id="createdDate">${user.createdDate.atZone(ZoneOffset.UTC)}</td>
 									<td id="updatedDate">${user.updatedDate.atZone(ZoneOffset.UTC)}</td>
 								--%>
-									<td id="createdDate" onload="toLocalTime('${DateTimeUtil.getCurrentUtcTime(user.createdDate)}')">${DateTimeUtil.getCurrentUtcTime(user.createdDate)}</td>
+									<td id="createdDate"></td>
 									<td id="updatedDate">${DateTimeUtil.getCurrentUtcTime(user.updatedDate)}</td>
 									
 							<td><a href="edit_user?uid=${user.uid}" type="button"
@@ -156,5 +145,11 @@
 		</h1>
 	</div>
 	<jsp:include page="footer.jsp" />
+	<script>
+		var createdDate = "${DateTimeUtil.getCurrentUtcTime(user.createdDate)}";
+		var updatedDate = "${DateTimeUtil.getCurrentUtcTime(user.updatedDate)}";
+      	document.getElementById("createdDate").innerHTML = new Date(createdDate + "z");
+      	document.getElementById("updatedDate").innerHTML = new Date(updatedDate + "z");
+	</script>
 </body>
 </html>
