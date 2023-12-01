@@ -81,81 +81,87 @@
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-user fa-lg me-3 fa-fw"></i>
 											<div class="form-outline flex-fill mb-0">
-												<label class="form-label d-flex text-start" for="form3Example1c">Building
-													ID</label>
+												<label class="form-label d-flex text-start"
+													for="form3Example1c">Building ID</label>
 												<form:input path="buildingId" type="text"
-													id="form3Example1c" class="form-control" value="${building.buildingId}" disabled="true"/>
+													id="form3Example1c" class="form-control"
+													value="${building.buildingId}" disabled="true" />
 											</div>
 										</div>
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-user fa-lg me-3 fa-fw"></i>
 											<div class="form-outline flex-fill mb-0">
-												<label class="form-label d-flex text-start" for="form3Example1c">Building
-													Name</label>
+												<label class="form-label d-flex text-start"
+													for="form3Example1c">Building Name</label>
 												<form:input path="buildingName" type="text"
-													id="form3Example1c" class="form-control" value="${building.buildingName}" />
+													id="form3Example1c" class="form-control"
+													value="${building.buildingName}" />
 											</div>
 										</div>
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-user fa-lg me-3 fa-fw"></i>
 											<div class="form-outline flex-fill mb-0">
-												<label class="form-label d-flex text-start" for="form3Example1c">Building
-													Owner Name</label>
+												<label class="form-label d-flex text-start"
+													for="form3Example1c">Building Owner Name</label>
 												<form:input path="buildingOwnerName" type="text"
-													id="form3Example1c" class="form-control" value="${building.buildingOwnerName}"/>
+													id="form3Example1c" class="form-control"
+													value="${building.buildingOwnerName}" />
 											</div>
 										</div>
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
 											<div class="form-outline flex-fill mb-0">
-												<label class="form-label d-flex text-start" for="form3Example4c">Architect
-													Name</label>
+												<label class="form-label d-flex text-start"
+													for="form3Example4c">Architect Name</label>
 												<form:input path="architect" type="text" id="form3Example4c"
-													class="form-control" value="${building.architect}"/>
+													class="form-control" value="${building.architect}" />
 											</div>
 										</div>
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
 											<div class="form-outline flex-fill mb-0">
-												<label class="form-label d-flex text-start" for="form3Example3c">Area
-													In Square Foot</label>
+												<label class="form-label d-flex text-start"
+													for="form3Example3c">Area In Square Foot</label>
 												<form:input path="areaInSqFoot" type="number"
-													id="form3Example3c" class="form-control" value="${building.areaInSqFoot}"/>
+													id="form3Example3c" class="form-control"
+													value="${building.areaInSqFoot}" />
 											</div>
 										</div>
 
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
 											<div class="form-outline flex-fill mb-0">
-												<label class="form-label d-flex text-start" for="form3Example3d">Floor
-													Count</label>
+												<label class="form-label d-flex text-start"
+													for="form3Example3d">Floor Count</label>
 												<form:input path="floorCount" type="number"
-													id="form3Example3d" class="form-control" value="${building.floorCount }" />
+													id="form3Example3d" class="form-control"
+													value="${building.floorCount }" />
 											</div>
 										</div>
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
 											<div class="form-outline flex-fill mb-0">
-												<label class="form-label d-flex text-start" for="form3Example3e">Building
-													Color</label>
-												<form:input path="color" type="text" id="form3Example3e" value="${building.color }"
-													class="form-control" />
+												<label class="form-label d-flex text-start"
+													for="form3Example3e">Building Color</label>
+												<form:input path="color" type="text" id="form3Example3e"
+													value="${building.color }" class="form-control" />
 											</div>
 										</div>
 
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
 											<div class="form-outline flex-fill mb-0">
-												<label class="form-label d-flex text-start" for="form3Example4c">Location</label>
+												<label class="form-label d-flex text-start"
+													for="form3Example4c">Location</label>
 												<form:input path="location" type="text" id="form3Example4c"
-													class="form-control" value="${building.location }"/>
+													class="form-control" value="${building.location }" />
 											</div>
 										</div>
 										<div class="d-flex flex-row align-items-center">
 											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
 											<div class="form-outline flex-fill mb-0">
-												<label class="form-label d-flex text-start" for="form3Example4c">Building
-													Height in Meter</label>
+												<label class="form-label d-flex text-start"
+													for="form3Example4c">Building Height in Meter</label>
 												<form:input path="height" type="number" id="form3Example4c"
 													class="form-control" value="${building.height }" />
 											</div>
@@ -163,8 +169,8 @@
 										<div class="d-flex flex-row align-items-center row">
 											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
 											<!-- 											<div> -->
-											<label class="form-label d-flex text-start" for="form3Example4c">Building
-												Cost in-$</label>
+											<label class="form-label d-flex text-start"
+												for="form3Example4c">Building Cost in-$</label>
 											<div class="input-group form-outline flex-fill mb-0">
 												<span class="input-group-text">$</span>
 												<form:input path="cost" type="number" id="form3Example4c"
@@ -176,30 +182,34 @@
 										</div>
 										<div class="align-items-center">
 											<div class="mb-3">
-												<label for="exampleFormControlTextarea1" class="form-label d-flex text-start">Some
-													Remarks </label> <!-- style="height:50px;" -->
+												<label for="exampleFormControlTextarea1"
+													class="form-label d-flex text-start">Some Remarks </label>
+												<!-- style="height:50px;" -->
 												<form:input class="form-control" path="remarks"
-													id="exampleFormControlTextarea1" rows="3" style="height:100px;" value="${building.remarks}"></form:input>
+													id="exampleFormControlTextarea1" rows="3"
+													style="height:100px;" value="${building.remarks}"></form:input>
 											</div>
 										</div>
 										<div class="d-flex text-center justify-content-center mt-3">
-											<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+											<div class="justify-content-center mx-4 mb-3 mb-lg-4">
 												<button type="submit" class="btn btn-primary">Update
-													Building Info</button>
+													Building</button>
+												<a href="/add-material" target="_blank" class="btn btn-primary">Material</a>
+												<a href="/machines" class="btn btn-primary">Machines</a> <a
+													href="/instruments" class="btn btn-primary">Instruments</a>
+												<a href="/manpower" class="btn btn-primary">Man Power</a>
 											</div>
-											<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-												<button type="reset" class="btn btn-primary">
-													Cancel</button>
+											<div class="ms-5 mb-3 mb-lg-4"> <!-- d-flex justify-content-center  -->
+												<button type="reset" class="btn btn-danger">Cancel</button>
 											</div>
-
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger"
+												data-bs-dismiss="modal">Close</button>
 										</div>
 									</form:form>
 
 									<!-- Modal footer -->
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger"
-											data-bs-dismiss="modal">Close</button>
-									</div>
 
 								</div>
 							</div>

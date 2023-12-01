@@ -46,7 +46,7 @@ public class PoTController {
 
 	@PostMapping("/building")
 	private String addBuildingPostPage(@ModelAttribute("building") Building building, RedirectAttributes attrs) {
-		building.setUser(new UserController().currentLoggedUser);
+		building.setUser(UserController.currentLoggedUser);
 		Boolean isBuildingDetailsAdded = buildingService.addBuilding(building);
 		if (isBuildingDetailsAdded) {
 			attrs.addFlashAttribute("resultMsg", "Building Details Added Successfully");
@@ -58,7 +58,7 @@ public class PoTController {
 
 	@GetMapping("/buildings")
 	private String buildingsPage(@ModelAttribute("building") Building building, Map<String, Object> map) {
-		map.put("buildings", buildingService.getAllBuildingsByUserID(new UserController().currentLoggedUser.getUid()));
+		map.put("buildings", buildingService.getAllBuildingsByUserID(UserController.currentLoggedUser.getUid()));
 		return "buildings";
 	}
 
@@ -66,9 +66,10 @@ public class PoTController {
 	private String buildingsPostPage(@ModelAttribute("building") Building building, RedirectAttributes attrs,
 			Map<String, Object> map) {
 //		building.setUser(UserController.currentLoggedUser);
-		Building building2 = buildingService.getByBuildingNameAndUser(building.getBuildingName(), UserController.currentLoggedUser).get(0);
-		BeanUtils.copyProperties(building, building2, "buildingId", "user");
-		Boolean isBuildingDetailsAdded = buildingService.addBuilding(building);
+		Building building2 = buildingService
+				.getByBuildingNameAndUser(building.getBuildingName(), UserController.currentLoggedUser).get(0);
+		BeanUtils.copyProperties(building, building2, "buildingId", "user", "createdDateAndTime");
+		Boolean isBuildingDetailsAdded = buildingService.addBuilding(building2);
 		if (isBuildingDetailsAdded) {
 			attrs.addFlashAttribute("resultMsg", "Building Details Updated Successfully");
 		} else {

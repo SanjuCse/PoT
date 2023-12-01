@@ -71,11 +71,11 @@ public class Building {
 	private ManPower manPower;
 
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH })
-	@JoinColumn(name = "user-id")
+	@JoinColumn(name = "user-id", nullable = false)
 	private User user;
 
 	@CreationTimestamp
-	private LocalDateTime createdDateAndTime;
+	private LocalDateTime createddateandtime;
 
 	@UpdateTimestamp
 	private LocalDateTime updatedDateAndTime;

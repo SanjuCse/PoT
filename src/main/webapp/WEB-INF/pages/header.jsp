@@ -20,11 +20,13 @@
 		</c:if>
 		<c:if test="${!isAdmin}">
 			<li><a href="/buildings" class="nav-link px-2 link-dark">Building</a></li>
-			<li><a href="/add-material" class="nav-link px-2 link-dark">Material</a></li>
-			<li><a href="/machines" class="nav-link px-2 link-dark">Machines</a></li>
-			<li><a href="/instruments" class="nav-link px-2 link-dark">Instruments</a></li>
-			<li><a href="/manpower" class="nav-link px-2 link-dark">Man
-					Power</a></li>
+			<!-- 
+				<li><a href="/add-material" class="nav-link px-2 link-dark">Material</a></li>
+				<li><a href="/machines" class="nav-link px-2 link-dark">Machines</a></li>
+				<li><a href="/instruments" class="nav-link px-2 link-dark">Instruments</a></li>
+				<li><a href="/manpower" class="nav-link px-2 link-dark">Man
+						Power</a></li> 
+			-->
 			<li><a href="/about" class="nav-link px-2 link-dark">About</a></li>
 		</c:if>
 	</ul>
