@@ -2,6 +2,7 @@ package com.pot.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +10,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pot.model.Building;
 import com.pot.model.Instruments;
+import com.pot.model.Machines;
+import com.pot.model.ManPower;
 import com.pot.model.Material;
-import com.pot.model.User;
 import com.pot.service.IBuildingService;
 import com.pot.service.IInstrumentService;
+import com.pot.service.IMachineService;
+import com.pot.service.IManPowerService;
 import com.pot.service.IMaterialService;
 import com.pot.service.IUserService;
 
@@ -33,6 +38,12 @@ public class PoTController {
 
 	@Autowired
 	private IUserService userService;
+
+	@Autowired
+	private IManPowerService manPowerService;
+
+	@Autowired
+	private IMachineService machineService;
 
 //	@GetMapping("/")
 //	private String homePage() {
@@ -78,63 +89,126 @@ public class PoTController {
 		return "redirect:/buildings";
 	}
 
-	@GetMapping("/add-material")
-	private String addMaterialPage(@ModelAttribute("material") Material material, Map<String, Object> map) {
-		map.put("buildings", buildingService.getAllBuildings());
-//		Material material2 = materialService.getMaterialByID(materialId);
-//		BeanUtils.copyProperties(material2, material);
-//		System.out.println(materialId);
+	@GetMapping("/materials")
+	private String addMaterialPage(@ModelAttribute("material") Material material,
+			@RequestParam("buildingId") Integer buildingId, Map<String, Object> map) {
+		Optional<List<Material>> material2 = materialService.getMaterialByBuildingID(buildingId);
+		if (material2.isPresent() && material2.get().size() != 0 && material2.get().get(0) != null) {
+			map.put("materials", material2.get().get(0));
+			System.out.println(material);
+			System.out.println(material2.get().get(0));
+			return "materials";
+		}
 		return "add-material-form";
 	}
 
-	@PostMapping("/add-material")
-	private String addMaterial(@ModelAttribute("material") Material material, RedirectAttributes attrs) {
-		material.setBuilding(buildingService.getBuildingByID(material.getBuildingId()));
-//		System.out.println(buildingService.getBuildingByID(material.getBuildingId()));
-//		System.out.println(material);
-//		Integer status2 = buildingService.updateMaterialByBuildingID(material, material.getBuildingId());
+	@PostMapping("/materials")
+	private String addMaterial(@ModelAttribute("material") Material material,
+			@RequestParam("buildingId") Integer buildingId, RedirectAttributes attrs) {
+		material.setBuilding(buildingService.getBuildingByID(buildingId));
 		Boolean status = materialService.addMaterial(material);
 
 		if (status) {
-			attrs.addFlashAttribute("resultMsg", "Material has been added successfully");
+			attrs.addFlashAttribute("resultMsg", "Material has been added/updated successfully");
 		} else {
 			attrs.addFlashAttribute("resultMsg", "Unable to add Material");
 		}
-		return "redirect:/materials";
+		return "redirect:/buildings";
 	}
 
-	@GetMapping("/materials")
-	private String materialsPage(Map<String, Object> map) {
-		map.put("materials", materialService.getAllMaterials().get(0));
-		return "materials";
-	}
-
-	@PostMapping("/materials")
-	private String materialsUpdatePage(Map<String, Object> map, @ModelAttribute("material") Material material,
-			RedirectAttributes attrs) {
-		map.put("materials", materialService.getAllMaterials().get(0));
-		Boolean status = materialService.addMaterial(material);
-		if (status) {
-			attrs.addFlashAttribute("resultMsg", "Material has been Updated Successfully");
-		} else {
-			attrs.addFlashAttribute("resultMsg", "Unable to Update Material");
+	@GetMapping("/instruments")
+	private String addInstrumentPage(@ModelAttribute("instruments") Instruments instruments,
+			@RequestParam("buildingId") Integer buildingId, Map<String, Object> map) {
+		Optional<List<Instruments>> instruments2 = instrumentService.getInstrumentByBuildingID(buildingId);
+		if (instruments2.isPresent() && instruments2.get().size() != 0 && instruments2.get().get(0) != null) {
+			map.put("instruments", instruments2.get().get(0));
+//			return "instrument-form";
 		}
-		return "redirect:/materials";
+		return "instrument-form";
 	}
 
-	@GetMapping("/add-instrument")
-	private String addInstrumentPage(@ModelAttribute("instruments") Instruments instruments) {
-		return "add-instrument-form";
-	}
-
-	@PostMapping("/add-instrument")
-	private String addMaterial(@ModelAttribute("material") Instruments instruments, RedirectAttributes attrs) {
-		Boolean status = instrumentService.addInstrument(instruments);
-		if (status) {
-			attrs.addFlashAttribute("resultMsg", "Instrumnets has been added successfully");
+	@PostMapping("/instruments")
+	private String addInstrument(@ModelAttribute("instruments") Instruments instruments,
+			@RequestParam("buildingId") Integer buildingId, RedirectAttributes attrs) {
+		instruments.setBuilding(buildingService.getBuildingByID(buildingId));
+		Optional<List<Instruments>> instruments2 = instrumentService.getInstrumentByBuildingID(buildingId);
+		Boolean status = false;
+		if (instruments2.isPresent() && instruments2.get().size() != 0 && instruments2.get().get(0) != null) {
+			BeanUtils.copyProperties(instruments, instruments2.get().get(0), "instrId");
+			status = instrumentService.addInstrument(instruments2.get().get(0));
 		} else {
-			attrs.addFlashAttribute("resultMsg", "Unable to add Instrumnets");
+			status = instrumentService.addInstrument(instruments);
 		}
-		return "redirect:/materials";
+
+		if (status) {
+			attrs.addFlashAttribute("resultMsg", "Instruments has been added/updated successfully");
+		} else {
+			attrs.addFlashAttribute("resultMsg", "Unable to add/update Instruments");
+		}
+		return "redirect:/buildings";
+	}
+
+	@GetMapping("/manpower")
+	private String addManPowerPage(@ModelAttribute("manpower") ManPower manPower,
+			@RequestParam("buildingId") Integer buildingId, Map<String, Object> map) {
+		Optional<List<ManPower>> manPower2 = manPowerService.getManPowerByBuildingID(buildingId);
+		if (manPower2.isPresent() && manPower2.get().size() != 0 && manPower2.get().get(0) != null) {
+			map.put("manpower", manPower2.get().get(0));
+			return "manpower-form";
+		}
+		return "manpower-form";
+	}
+
+	@PostMapping("/manpower")
+	private String addManPower(@ModelAttribute("manpower") ManPower manPower,
+			@RequestParam("buildingId") Integer buildingId, RedirectAttributes attrs) {
+		manPower.setBuilding(buildingService.getBuildingByID(buildingId));
+		Optional<List<ManPower>> manPower2 = manPowerService.getManPowerByBuildingID(buildingId);
+		Boolean status = false;
+		if (manPower2.isPresent() && manPower2.get().size() != 0 && manPower2.get().get(0) != null) {
+			BeanUtils.copyProperties(manPower, manPower2.get().get(0), "manPowerId");
+			status = manPowerService.addManPower(manPower2.get().get(0));
+		} else {
+			status = manPowerService.addManPower(manPower);
+		}
+
+		if (status) {
+			attrs.addFlashAttribute("resultMsg", "Manpower has been added/updated successfully");
+		} else {
+			attrs.addFlashAttribute("resultMsg", "Unable to add/update Manpower");
+		}
+		return "redirect:/buildings";
+	}
+
+	@GetMapping("/machines")
+	private String addMachinePage(@ModelAttribute("machines") Machines machines,
+			@RequestParam("buildingId") Integer buildingId, Map<String, Object> map) {
+		Optional<List<Machines>> machines2 = machineService.getMachineByBuildingID(buildingId);
+		if (machines2.isPresent() && machines2.get().size() != 0 && machines2.get().get(0) != null) {
+			map.put("machines", machines2.get().get(0));
+			return "machine-form";
+		}
+		return "machine-form";
+	}
+
+	@PostMapping("/machines")
+	private String addMachine(@ModelAttribute("machines") Machines machines,
+			@RequestParam("buildingId") Integer buildingId, RedirectAttributes attrs) {
+		machines.setBuilding(buildingService.getBuildingByID(buildingId));
+		Optional<List<Machines>> machines2 = machineService.getMachineByBuildingID(buildingId);
+		Boolean status = false;
+		if (machines2.isPresent() && machines2.get().size() != 0 && machines2.get().get(0) != null) {
+			BeanUtils.copyProperties(machines, machines2.get().get(0), "machineId");
+			status = machineService.addMachine(machines2.get().get(0));
+		} else {
+			status = machineService.addMachine(machines);
+		}
+
+		if (status) {
+			attrs.addFlashAttribute("resultMsg", "Machines has been added/updated successfully");
+		} else {
+			attrs.addFlashAttribute("resultMsg", "Unable to add/update Machines");
+		}
+		return "redirect:/buildings";
 	}
 }

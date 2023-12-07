@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,10 +32,8 @@
 					</c:if>
 					<div class="card text-black" style="border-radius: 25px">
 						<div class="card-body p-md-5">
-							<!-- <div class="row justify-content-center">
-								<div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1"> -->
 							<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">PoT
-								- View And Update Materials List</p>
+								- View And Update Materials</p>
 							<form:form cssClass="mx-1 mx-md-4" modelAttribute="materials">
 								<div class="row">
 									<div class="d-flex flex-row align-items-center col-6">
@@ -151,7 +149,7 @@
 											Material</button>
 									</div>
 									<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-										<button type="reset" class="btn btn-primary">Cancel</button>
+										<button type="reset" class="btn btn-danger">Cancel</button>
 									</div>
 
 								</div>

@@ -17,13 +17,13 @@ public class Machines {
 	@GeneratedValue(generator = "machineIdGen", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(sequenceName = "machineIdGen", name = "machineIdGen", initialValue = 4000, allocationSize = 1)
 	private Integer machineId;
-	
+
 	private Integer concreteMixer;
-	
+
 	private Integer bullDozer;
-	
+
 	private Integer hydroliftCrane;
-	
+
 	@JoinColumn(name = "building-id", referencedColumnName = "building-id")
 	@OneToOne(cascade = CascadeType.ALL)
 	private Building building;

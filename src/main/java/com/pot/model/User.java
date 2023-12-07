@@ -46,13 +46,13 @@ public class User {
 
 	@Column(name = "isAdmin")
 	private Boolean isAdmin = false;
-	
+
 	@CreationTimestamp
 	private LocalDateTime createdDate;
-	
+
 	@UpdateTimestamp
 	private LocalDateTime updatedDate;
-	
+
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Building> buildings;
 }

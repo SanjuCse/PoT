@@ -1,15 +1,11 @@
 package com.pot.service;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.pot.contracts.UserLogin;
-import com.pot.model.Building;
 import com.pot.model.User;
 import com.pot.repo.UserRepo;
 

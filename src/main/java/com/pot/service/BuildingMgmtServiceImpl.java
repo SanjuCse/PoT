@@ -59,7 +59,7 @@ public class BuildingMgmtServiceImpl implements IBuildingService {
 	public List<Building> getByBuildingName(String buildingName) {
 		return buildingRepo.getByBuildingName(buildingName);
 	}
-	
+
 	@Override
 	public List<Building> getByBuildingNameAndUser(String buildingName, User user) {
 		return buildingRepo.getByBuildingNameAndUser(buildingName, user);

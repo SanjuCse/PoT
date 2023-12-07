@@ -20,7 +20,7 @@ public interface IBuildingService {
 	List<Building> getAllBuildingsByUserID(Integer uid);
 
 	List<Building> getByBuildingName(String buildingName);
-	
+
 	List<Building> getByBuildingNameAndUser(String buildingName, User user);
-	
+
 }

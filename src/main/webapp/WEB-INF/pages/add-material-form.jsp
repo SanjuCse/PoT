@@ -109,16 +109,16 @@
 				<frm:input type="text" path="ply" class="form-control text-center"
 					disabled="disabled" value="0"></frm:input>
 			</div>
-			<div class="d-flex justify-content-center">
-				<div class="col-md-6">
-					<frm:select path="buildingId" class="form-select" aria-label="Default select example">
-						<frm:option selected="selected" value="0">Choose Building</frm:option>
-						<c:forEach var="building" items="${buildings}">
-							<frm:option value="${building.buildingId}"> ${building.buildingName} </frm:option>
-						</c:forEach>
-					</frm:select>
-				</div>
-			</div>
+<!-- 			<div class="d-flex justify-content-center"> -->
+<!-- 				<div class="col-md-6"> -->
+<%-- 					<frm:select path="buildingId" class="form-select" aria-label="Default select example"> --%>
+<%-- 						<frm:option selected="selected" value="0">Choose Building</frm:option> --%>
+<%-- 						<c:forEach var="building" items="${buildings}"> --%>
+<%-- 							<frm:option value="${building.buildingId}"> ${building.buildingName} </frm:option> --%>
+<%-- 						</c:forEach> --%>
+<%-- 					</frm:select> --%>
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<div class="col-12 text-center mt-5">
 				<button type="submit" class="btn btn-primary">
 					<span class="bi bi-building-add"></span> Add Material

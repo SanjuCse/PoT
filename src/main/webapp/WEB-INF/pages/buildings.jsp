@@ -194,10 +194,10 @@
 											<div class="justify-content-center mx-4 mb-3 mb-lg-4">
 												<button type="submit" class="btn btn-primary">Update
 													Building</button>
-												<a href="/add-material" target="_blank" class="btn btn-primary">Material</a>
-												<a href="/machines" class="btn btn-primary">Machines</a> <a
-													href="/instruments" class="btn btn-primary">Instruments</a>
-												<a href="/manpower" class="btn btn-primary">Man Power</a>
+												<a href="/materials?buildingId=${building.buildingId}" class="btn btn-primary">Material</a>
+												<a href="/machines?buildingId=${building.buildingId}" class="btn btn-primary">Machines</a> <a
+													href="/instruments?buildingId=${building.buildingId}" class="btn btn-primary">Instruments</a>
+												<a href="/manpower?buildingId=${building.buildingId}" class="btn btn-primary">Man Power</a>
 											</div>
 											<div class="ms-5 mb-3 mb-lg-4"> <!-- d-flex justify-content-center  -->
 												<button type="reset" class="btn btn-danger">Cancel</button>

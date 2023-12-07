@@ -9,10 +9,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter
+@Getter
 public class Instruments {
 	@Id
 	@GeneratedValue(generator = "InstrIdGen", strategy = GenerationType.SEQUENCE)

@@ -9,10 +9,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter
+@Getter
 public class Material {
 	@Id
 	@GeneratedValue(generator = "materialIdGen", strategy = GenerationType.SEQUENCE)
@@ -49,9 +51,6 @@ public class Material {
 
 	@Column(name = "Pipe-In-Trips")
 	private Integer pipe;
-
-	@Column(name = "buildingId")
-	private Integer buildingId;
 
 	@JoinColumn(name = "building-id", referencedColumnName = "building-id")
 	@OneToOne(cascade = CascadeType.ALL)
