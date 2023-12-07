@@ -22,7 +22,8 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div class="container">
-		<h1 class="text-center">Add/Update Machines Form</h1>
+		<h1 class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add/Update Machines Form</h1>
+		<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">(${buildingName})</p>
 		<frm:form modelAttribute="machines" class="row g-3 mt-4">
 			<div class="col-md-4 text-center">
 				<img

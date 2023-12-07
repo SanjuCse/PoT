@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home Page</title>
+<title>Material Page</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -22,7 +22,8 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div class="container">
-		<h1 class="text-center">Add Material Form</h1>
+		<h1 class="text-center h1 fw-bold mx-1 mx-md-4 mt-4">Add Material Form</h1>
+		<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">(${buildingName})</p>
 		<frm:form modelAttribute="material" class="row g-3">
 			<div class="col-md-3">
 				<label for="customRange" class="form-label">Cement (In

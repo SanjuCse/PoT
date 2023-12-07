@@ -22,7 +22,8 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div class="container">
-		<h1 class="text-center">Add/Update Instrument Form</h1>
+		<h1 class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add/Update Instrument Form</h1>
+		<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">(${buildingName})</p>
 		<frm:form modelAttribute="instruments" class="row g-3 mt-4">
 			<div class="col-md-4 text-center">
 				<img src="https://www.themetalstore.co.uk/up/images/19435/image.jpg"
@@ -103,10 +104,6 @@ rounded thumbnail" height="200px" width="250px"
 					class="form-control text-center" disabled="disabled"
 					value="${instruments.woodenFloat==null?0:instruments.woodenFloat}"></frm:input>
 			</div>
-			<!-- 			<div class="text-center"> -->
-			<!-- 				<button type="submit" class="btn btn-primary"><span class="bi bi-house-gear-fill"></span> Add/Update Instrument</button> -->
-			<!-- 				<button type="reset" class="btn btn-danger"><span class="bi bi-x-lg"></span> Cancel</button> -->
-			<!-- 			</div> -->
 			<div class="d-flex mt-5 justify-content-center">
 				<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
 					<button type="submit" class="btn btn-primary">Add/Update Instrument</button>

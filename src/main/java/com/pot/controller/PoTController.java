@@ -23,7 +23,6 @@ import com.pot.service.IInstrumentService;
 import com.pot.service.IMachineService;
 import com.pot.service.IManPowerService;
 import com.pot.service.IMaterialService;
-import com.pot.service.IUserService;
 
 @Controller
 public class PoTController {
@@ -35,9 +34,6 @@ public class PoTController {
 
 	@Autowired
 	private IBuildingService buildingService;
-
-	@Autowired
-	private IUserService userService;
 
 	@Autowired
 	private IManPowerService manPowerService;
@@ -76,7 +72,6 @@ public class PoTController {
 	@PostMapping("/buildings")
 	private String buildingsPostPage(@ModelAttribute("building") Building building, RedirectAttributes attrs,
 			Map<String, Object> map) {
-//		building.setUser(UserController.currentLoggedUser);
 		Building building2 = buildingService
 				.getByBuildingNameAndUser(building.getBuildingName(), UserController.currentLoggedUser).get(0);
 		BeanUtils.copyProperties(building, building2, "buildingId", "user", "createdDateAndTime");
@@ -93,10 +88,9 @@ public class PoTController {
 	private String addMaterialPage(@ModelAttribute("material") Material material,
 			@RequestParam("buildingId") Integer buildingId, Map<String, Object> map) {
 		Optional<List<Material>> material2 = materialService.getMaterialByBuildingID(buildingId);
+		map.put("buildingName", buildingService.getBuildingByID(buildingId).getBuildingName());
 		if (material2.isPresent() && material2.get().size() != 0 && material2.get().get(0) != null) {
 			map.put("materials", material2.get().get(0));
-			System.out.println(material);
-			System.out.println(material2.get().get(0));
 			return "materials";
 		}
 		return "add-material-form";
@@ -120,6 +114,7 @@ public class PoTController {
 	private String addInstrumentPage(@ModelAttribute("instruments") Instruments instruments,
 			@RequestParam("buildingId") Integer buildingId, Map<String, Object> map) {
 		Optional<List<Instruments>> instruments2 = instrumentService.getInstrumentByBuildingID(buildingId);
+		map.put("buildingName", buildingService.getBuildingByID(buildingId).getBuildingName());
 		if (instruments2.isPresent() && instruments2.get().size() != 0 && instruments2.get().get(0) != null) {
 			map.put("instruments", instruments2.get().get(0));
 //			return "instrument-form";
@@ -152,6 +147,7 @@ public class PoTController {
 	private String addManPowerPage(@ModelAttribute("manpower") ManPower manPower,
 			@RequestParam("buildingId") Integer buildingId, Map<String, Object> map) {
 		Optional<List<ManPower>> manPower2 = manPowerService.getManPowerByBuildingID(buildingId);
+		map.put("buildingName", buildingService.getBuildingByID(buildingId).getBuildingName());
 		if (manPower2.isPresent() && manPower2.get().size() != 0 && manPower2.get().get(0) != null) {
 			map.put("manpower", manPower2.get().get(0));
 			return "manpower-form";
@@ -184,6 +180,7 @@ public class PoTController {
 	private String addMachinePage(@ModelAttribute("machines") Machines machines,
 			@RequestParam("buildingId") Integer buildingId, Map<String, Object> map) {
 		Optional<List<Machines>> machines2 = machineService.getMachineByBuildingID(buildingId);
+		map.put("buildingName", buildingService.getBuildingByID(buildingId).getBuildingName());
 		if (machines2.isPresent() && machines2.get().size() != 0 && machines2.get().get(0) != null) {
 			map.put("machines", machines2.get().get(0));
 			return "machine-form";
